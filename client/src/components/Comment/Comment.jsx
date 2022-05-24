@@ -68,21 +68,53 @@ const Comment = ({ comment, reply }) => {
   return (
     <>
       <article className={reply ? "comment reply" : "comment"}>
-        <div className="comment__header">
-          <img className="avatar" src={user.image.webp} alt="user avatar" />
-          <p className="user">{user.username}</p>
-          <p className="time">{createdAt}</p>
+        <div className="comment__content">
+          <div className="header">
+            <div className="details">
+              <img className="avatar" src={user.image.webp} alt="user avatar" />
+              <p className="user">{user.username}</p>
+              <p className="time">{createdAt}</p>
+            </div>
+            <div>
+              {!isCurrentUser ? (
+                <button
+                  onClick={() => showReply()}
+                  className="comment__reply desktop"
+                >
+                  <img className="replyImg" src={ReplyBtn} alt="reply button" />{" "}
+                  Reply
+                </button>
+              ) : (
+                <div className="comment__userBtns desktop">
+                  <button
+                    onClick={() => showPrompt(id)}
+                    className="comment__delete"
+                  >
+                    <img src={Delete} alt="delete" />
+                    Delete
+                  </button>
+                  <button
+                    onClick={() => setEdit(true)}
+                    className="comment__edit"
+                  >
+                    <img src={Edit} alt="delete" />
+                    Edit
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+          <p className="text">
+            <CommentBody
+              edit={edit}
+              setEdit={setEdit}
+              replyingTo={replyingTo}
+              content={content}
+            />
+          </p>
         </div>
-        <p className="comment__content">
-          <CommentBody
-            edit={edit}
-            setEdit={setEdit}
-            replyingTo={replyingTo}
-            content={content}
-          />
-        </p>
-        <div className="comment__footer">
-          <div className="comment__likes">
+        <div className="comment__buttons">
+          <div className="likes">
             <button onClick={addToScore} className="plusBtn">
               <Plus />
             </button>
@@ -92,12 +124,15 @@ const Comment = ({ comment, reply }) => {
             </button>
           </div>
           {!isCurrentUser ? (
-            <button onClick={() => showReply()} className="comment__reply">
+            <button
+              onClick={() => showReply()}
+              className="comment__reply mobile"
+            >
               <img className="replyImg" src={ReplyBtn} alt="reply button" />{" "}
               Reply
             </button>
           ) : (
-            <div className="comment__userBtns">
+            <div className="comment__userBtns mobile">
               <button
                 onClick={() => showPrompt(id)}
                 className="comment__delete"

@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as *;
+@use "../utils/breakpoints" as *;
 
 @mixin buttons {
   border: none;
@@ -31,75 +32,106 @@
   background-color: $white;
   border-radius: $borderRad;
 
-  &__header {
-    display: flex;
-    align-items: center;
-
-    gap: 20px;
-
-    .avatar {
-      width: 35px;
-    }
-
-    .user {
-      color: $darkBlue;
-      font-weight: $mediumWg;
-    }
+  @include breakpoint(tablet) {
+    flex-direction: row-reverse;
+    min-height: 150px;
   }
 
   &__content {
-    line-height: 1.5rem;
-
-    .replyingTo {
-      color: $modBlue;
-    }
-  }
-
-  &__footer {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__likes {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    background-color: $liteGray;
-    padding: 5px;
-    border-radius: 7px;
-
-    .plusBtn {
-      @include buttons;
-
-      svg > path {
-        transition: 0.2s;
-      }
-
-      &:hover {
-        svg > path {
-          fill: $modBlue;
-        }
-      }
+    @include breakpoint(tablet) {
+      flex: 9;
     }
 
-    .score {
-      color: $modBlue;
-      font-weight: $mediumWg;
-    }
+    .header {
+      margin-bottom: 10px;
 
-    .minusBtn {
-      @include buttons;
       display: flex;
       align-items: center;
+      gap: 20px;
 
-      svg > path {
-        transition: 0.2s;
+      @include breakpoint(tablet) {
+        justify-content: space-between;
       }
 
-      &:hover {
+      .details {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .avatar {
+        width: 35px;
+      }
+
+      .user {
+        color: $darkBlue;
+        font-weight: $mediumWg;
+      }
+    }
+
+    .text {
+      line-height: 1.5rem;
+
+      .replyingTo {
+        color: $modBlue;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    .likes {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      background-color: $liteGray;
+      padding: 5px;
+      border-radius: 7px;
+
+      @include breakpoint(tablet) {
+        max-height: 100px;
+        padding: 10px 5px;
+
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+      }
+
+      .plusBtn {
+        @include buttons;
+
         svg > path {
-          fill: $modBlue;
+          transition: 0.2s;
+        }
+
+        &:hover {
+          svg > path {
+            fill: $modBlue;
+          }
+        }
+      }
+
+      .score {
+        color: $modBlue;
+        font-weight: $mediumWg;
+      }
+
+      .minusBtn {
+        @include buttons;
+        display: flex;
+        align-items: center;
+
+        svg > path {
+          transition: 0.2s;
+        }
+
+        &:hover {
+          svg > path {
+            fill: $modBlue;
+          }
         }
       }
     }
@@ -114,6 +146,7 @@
 
   &__userBtns {
     display: flex;
+    flex-wrap: nowrap;
   }
 
   &__delete {
@@ -128,6 +161,20 @@
     @include chatButtons;
 
     color: $modBlue;
+  }
+
+  .desktop {
+    display: none;
+
+    @include breakpoint(tablet) {
+      display: flex;
+    }
+  }
+
+  .mobile {
+    @include breakpoint(tablet) {
+      display: none;
+    }
   }
 }
 

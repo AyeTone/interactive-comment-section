@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as *;
+@use "../utils/breakpoints" as *;
 
 @mixin buttons {
   padding: 15px 28px;
@@ -44,6 +45,10 @@
 
     background-color: $white;
     border-radius: $borderRad;
+
+    @include breakpoint(tablet) {
+      width: 30%;
+    }
   }
 
   &__text {

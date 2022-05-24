@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as *;
+@use "../utils/breakpoints" as *;
 
 .form {
   padding: 15px;
@@ -7,19 +8,41 @@
   border-radius: $borderRad;
   background-color: $white;
 
-  &__input {
-    resize: none;
-    width: 100%;
-    height: 70px;
+  @include breakpoint(tablet) {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
 
-    margin-bottom: 10px;
-    padding: 10px 20px;
+  &__main {
+    @include breakpoint(tablet) {
+      display: flex;
+      gap: 10px;
+      flex: 9;
+    }
 
-    border: 1px solid $liteGray;
-    border-radius: $borderRad;
+    .input {
+      resize: none;
+      width: 100%;
+      height: 70px;
 
-    &:focus {
-      outline: 1px solid $modBlue;
+      margin-bottom: 10px;
+      padding: 10px 20px;
+
+      border: 1px solid $liteGray;
+      border-radius: $borderRad;
+
+      @include breakpoint(tablet) {
+        height: 100px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: 1px solid $modBlue;
+      }
     }
   }
 
@@ -27,10 +50,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .avatar {
-      width: 30px;
-    }
 
     .submit {
       padding: 12px 25px;
@@ -51,6 +70,29 @@
       &:active {
         transform: scale(0.8);
       }
+    }
+  }
+
+  .desktop {
+    display: none;
+
+    @include breakpoint(tablet) {
+      display: unset;
+    }
+  }
+
+  .mobile {
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
+
+  .avatar {
+    width: 30px;
+
+    @include breakpoint(tablet) {
+      width: 35px;
+      height: 35px;
     }
   }
 }

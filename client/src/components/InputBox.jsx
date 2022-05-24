@@ -24,18 +24,25 @@ const InputBox = ({ displayReply, setDisplayReply, id, replyingTo }) => {
       }}
       className="form"
     >
-      <textarea
-        className="form__input"
-        value={userInput}
-        placeholder="Add a comment..."
-        type="text"
-        onChange={(e) => {
-          setUserInput(e.target.value);
-        }}
-      />
+      <div className="form__main">
+        <img
+          className="avatar desktop"
+          src={currentUser.image.png}
+          alt="Current User"
+        />
+        <textarea
+          className="input"
+          value={userInput}
+          placeholder="Add a comment..."
+          type="text"
+          onChange={(e) => {
+            setUserInput(e.target.value);
+          }}
+        />
+      </div>
       <div className="form__footer">
         <img
-          className="avatar"
+          className="avatar mobile"
           src={currentUser.image.png}
           alt="Current User"
         />

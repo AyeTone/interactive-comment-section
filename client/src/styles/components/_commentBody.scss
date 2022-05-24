@@ -15,6 +15,10 @@
     border: 1px solid $liteGray;
     border-radius: $borderRad;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &:focus {
       outline: 1px solid $modBlue;
     }

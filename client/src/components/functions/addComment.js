@@ -7,23 +7,27 @@ export const addComment = (
   setComments
 ) => {
   if (userInput) {
+    const newComment = {
+      id: new Date(),
+      content: userInput,
+      createdAt: "Just Now",
+      score: 0,
+      user: {
+        image: {
+          png: currentUser.image.png,
+          webp: currentUser.image.webp,
+        },
+        username: currentUser.username,
+      },
+    };
+
     if (!isReply) {
       //Add New Comment
       setComments((prev) => {
         return [
           ...prev,
           {
-            id: new Date(),
-            content: userInput,
-            createdAt: "Just Now",
-            score: 0,
-            user: {
-              image: {
-                png: currentUser.image.png,
-                webp: currentUser.image.webp,
-              },
-              username: currentUser.username,
-            },
+            ...newComment,
             replies: [],
           },
         ];
@@ -40,18 +44,8 @@ export const addComment = (
               replies: [
                 ...replies,
                 {
-                  id: new Date(),
-                  content: userInput,
-                  createdAt: "Just Now",
-                  score: 0,
+                  ...newComment,
                   replyingTo,
-                  user: {
-                    image: {
-                      png: currentUser.image.png,
-                      webp: currentUser.image.webp,
-                    },
-                    username: currentUser.username,
-                  },
                 },
               ],
             };
@@ -71,18 +65,8 @@ export const addComment = (
                 replies: [
                   ...replies,
                   {
-                    id: new Date(),
-                    content: userInput,
-                    createdAt: "Just Now",
-                    score: 0,
+                    ...newComment,
                     replyingTo,
-                    user: {
-                      image: {
-                        png: currentUser.image.png,
-                        webp: currentUser.image.webp,
-                      },
-                      username: currentUser.username,
-                    },
                   },
                 ],
               };

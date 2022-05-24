@@ -1,6 +1,11 @@
 @use "../abstracts/variables" as *;
+@use "../utils/breakpoints" as *;
 
 .content {
   margin: 0 auto;
   width: 90%;
+
+  @include breakpoint(tablet) {
+    width: 60%;
+  }
 }
