@@ -1,0 +1,45 @@
+@use "../abstracts/variables" as *;
+
+.edit {
+  width: 100%;
+
+  &__input {
+    width: 100%;
+    resize: none;
+
+    height: 100px;
+
+    margin-bottom: 10px;
+    padding: 10px 20px;
+
+    border: 1px solid $liteGray;
+    border-radius: $borderRad;
+
+    &:focus {
+      outline: 1px solid $modBlue;
+    }
+  }
+
+  &__submit {
+    float: right;
+
+    padding: 10px 25px;
+
+    color: $white;
+    background-color: $modBlue;
+    font-weight: $boldWg;
+
+    border: 1px solid transparent;
+    border-radius: $borderRad;
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:hover {
+      opacity: 0.4;
+    }
+
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+}

@@ -1,0 +1,151 @@
+@use "../abstracts/variables" as *;
+
+@mixin buttons {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@mixin chatButtons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 1.1rem;
+  font-weight: $mediumWg;
+  transition: 0.25s;
+
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+.comment {
+  margin-bottom: 15px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  background-color: $white;
+  border-radius: $borderRad;
+
+  &__header {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    .avatar {
+      width: 35px;
+    }
+
+    .user {
+      color: $darkBlue;
+      font-weight: $mediumWg;
+    }
+  }
+
+  &__content {
+    line-height: 1.5rem;
+
+    .replyingTo {
+      color: $modBlue;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__likes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: $liteGray;
+    padding: 5px;
+    border-radius: 7px;
+
+    .plusBtn {
+      @include buttons;
+
+      svg > path {
+        transition: 0.2s;
+      }
+
+      &:hover {
+        svg > path {
+          fill: $modBlue;
+        }
+      }
+    }
+
+    .score {
+      color: $modBlue;
+      font-weight: $mediumWg;
+    }
+
+    .minusBtn {
+      @include buttons;
+      display: flex;
+      align-items: center;
+
+      svg > path {
+        transition: 0.2s;
+      }
+
+      &:hover {
+        svg > path {
+          fill: $modBlue;
+        }
+      }
+    }
+  }
+
+  &__reply {
+    @include buttons;
+    @include chatButtons;
+
+    color: $modBlue;
+  }
+
+  &__userBtns {
+    display: flex;
+  }
+
+  &__delete {
+    @include buttons;
+    @include chatButtons;
+
+    color: $softRed;
+  }
+
+  &__edit {
+    @include buttons;
+    @include chatButtons;
+
+    color: $modBlue;
+  }
+}
+
+.replies {
+  display: flex;
+
+  &__offset {
+    content: " ";
+    margin: 10px 0;
+    width: 8px;
+    background-color: $liteGray;
+  }
+}
+
+.reply {
+  margin-left: 15px;
+}
+
+.reply__input {
+  margin-left: 15px;
+}

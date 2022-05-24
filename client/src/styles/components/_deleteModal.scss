@@ -1,0 +1,78 @@
+@use "../abstracts/variables" as *;
+
+@mixin buttons {
+  padding: 15px 28px;
+
+  border: none;
+  border-radius: $borderRad;
+  cursor: pointer;
+  transition: 0.25s;
+
+  text-transform: uppercase;
+  color: $white;
+  font-size: 1.1rem;
+  font-weight: $boldWg;
+
+  &:hover {
+    opacity: 0.4;
+  }
+
+  &:active {
+    transform: scale(0.8);
+  }
+}
+
+.modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+
+  background-color: rgba(0, 0, 0, 0.333);
+
+  &__content {
+    padding: 20px;
+    width: 80%;
+
+    display: grid;
+    gap: 20px;
+
+    background-color: $white;
+    border-radius: $borderRad;
+  }
+
+  &__text {
+    display: grid;
+    gap: 15px;
+
+    .header {
+      color: $darkBlue;
+      font-weight: $mediumWg;
+      font-size: $mdFz;
+    }
+
+    .text {
+      line-height: 1.4rem;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+
+    .dont-cancel {
+      @include buttons;
+      background-color: $grayishBlue;
+    }
+
+    .cancel {
+      @include buttons;
+      background-color: $softRed;
+    }
+  }
+}
