@@ -2,16 +2,16 @@ import React, { useState, useContext } from "react";
 import DataContext from "../Context/DataContent";
 
 const InputBox = ({ displayReply, setDisplayReply, id, replyingTo }) => {
-  const { currentUser, addComment } = useContext(DataContext);
+  const { currentUser, addComment, setComments } = useContext(DataContext);
   const [userInput, setUserInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let isReply = displayReply;
     if (!displayReply) {
-      addComment(userInput, currentUser);
+      addComment(userInput, currentUser, isReply, id, replyingTo, setComments);
     } else if (displayReply) {
-      addComment(userInput, currentUser, isReply, id, replyingTo);
+      addComment(userInput, currentUser, isReply, id, replyingTo, setComments);
       setDisplayReply(false);
     }
     setUserInput("");
