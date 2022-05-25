@@ -10,14 +10,12 @@ const Comments = () => {
       <div key={id}>
         <Comment comment={comment} />
         <div className="replies">
-          <div className="replies__offset"></div>
-          <div>
+          <div className="replies__offset">
+            <div className="line"></div>
+          </div>
+          <div className="replies__replies">
             {comment.replies.map((reply, id) => {
-              return (
-                <>
-                  <Comment key={id} reply={reply} />
-                </>
-              );
+              return <Comment key={id} reply={reply} />;
             })}
           </div>
         </div>

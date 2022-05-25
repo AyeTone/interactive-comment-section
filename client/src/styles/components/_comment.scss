@@ -32,7 +32,7 @@
   background-color: $white;
   border-radius: $borderRad;
 
-  @include breakpoint(tablet) {
+  @include breakpoint(desktop) {
     flex-direction: row-reverse;
     min-height: 150px;
   }
@@ -40,7 +40,7 @@
   &__content {
     padding: 0 20px;
 
-    @include breakpoint(tablet) {
+    @include breakpoint(desktop) {
       flex: 9;
     }
 
@@ -51,7 +51,7 @@
       align-items: center;
       gap: 20px;
 
-      @include breakpoint(tablet) {
+      @include breakpoint(desktop) {
         justify-content: space-between;
       }
 
@@ -99,7 +99,7 @@
       padding: 5px 10px;
       border-radius: 7px;
 
-      @include breakpoint(tablet) {
+      @include breakpoint(desktop) {
         max-height: 100px;
         padding: 10px 10px;
 
@@ -174,13 +174,13 @@
   .desktop {
     display: none;
 
-    @include breakpoint(tablet) {
+    @include breakpoint(desktop) {
       display: flex;
     }
   }
 
   .mobile {
-    @include breakpoint(tablet) {
+    @include breakpoint(desktop) {
       display: none;
     }
   }
@@ -190,17 +190,22 @@
   display: flex;
 
   &__offset {
-    content: " ";
-    margin: 10px 30px;
-    width: 8px;
-    background-color: $liteGray;
+    flex: 1;
+    .line {
+      content: " ";
+      width: 3px;
+      height: 100%;
+      background-color: $liteGray;
+    }
+
+    @include breakpoint(desktop) {
+      margin-right: 30px;
+      display: flex;
+      justify-content: center;
+    }
   }
-}
 
-.reply {
-  margin-left: 15px;
-}
-
-.reply__input {
-  margin-left: 15px;
+  &__replies {
+    width: 90%;
+  }
 }

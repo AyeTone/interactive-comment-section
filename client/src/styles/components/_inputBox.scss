@@ -8,14 +8,14 @@
   border-radius: $borderRad;
   background-color: $white;
 
-  @include breakpoint(tablet) {
+  @include breakpoint(desktop) {
     display: flex;
     align-items: flex-start;
     gap: 15px;
   }
 
   &__main {
-    @include breakpoint(tablet) {
+    @include breakpoint(desktop) {
       display: flex;
       gap: 10px;
       flex: 9;
@@ -32,7 +32,7 @@
       border: 1px solid $liteGray;
       border-radius: $borderRad;
 
-      @include breakpoint(tablet) {
+      @include breakpoint(desktop) {
         height: 100px;
       }
 
@@ -76,13 +76,13 @@
   .desktop {
     display: none;
 
-    @include breakpoint(tablet) {
+    @include breakpoint(desktop) {
       display: unset;
     }
   }
 
   .mobile {
-    @include breakpoint(tablet) {
+    @include breakpoint(desktop) {
       display: none;
     }
   }
@@ -90,7 +90,7 @@
   .avatar {
     width: 30px;
 
-    @include breakpoint(tablet) {
+    @include breakpoint(desktop) {
       width: 35px;
       height: 35px;
     }
