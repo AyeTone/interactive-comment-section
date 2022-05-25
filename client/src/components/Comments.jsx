@@ -9,9 +9,18 @@ const Comments = () => {
     return (
       <div key={id}>
         <Comment comment={comment} />
-        {comment.replies.map((reply, id) => {
-          return <Comment key={id} reply={reply} />;
-        })}
+        <div className="replies">
+          <div className="replies__offset"></div>
+          <div>
+            {comment.replies.map((reply, id) => {
+              return (
+                <>
+                  <Comment key={id} reply={reply} />
+                </>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   });

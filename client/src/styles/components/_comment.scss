@@ -38,6 +38,8 @@
   }
 
   &__content {
+    padding: 0 20px;
+
     @include breakpoint(tablet) {
       flex: 9;
     }
@@ -94,12 +96,12 @@
       gap: 10px;
 
       background-color: $liteGray;
-      padding: 5px;
+      padding: 5px 10px;
       border-radius: 7px;
 
       @include breakpoint(tablet) {
         max-height: 100px;
-        padding: 10px 5px;
+        padding: 10px 10px;
 
         flex-direction: column;
         justify-content: space-around;
@@ -109,12 +111,12 @@
       .plusBtn {
         @include buttons;
 
-        svg > path {
+        path {
           transition: 0.2s;
         }
 
         &:hover {
-          svg > path {
+          path {
             fill: $modBlue;
           }
         }
@@ -130,12 +132,12 @@
         display: flex;
         align-items: center;
 
-        svg > path {
+        path {
           transition: 0.2s;
         }
 
         &:hover {
-          svg > path {
+          path {
             fill: $modBlue;
           }
         }
@@ -189,7 +191,7 @@
 
   &__offset {
     content: " ";
-    margin: 10px 0;
+    margin: 10px 30px;
     width: 8px;
     background-color: $liteGray;
   }
