@@ -20,6 +20,7 @@ const CommentBody = ({ replyingTo, content, edit, setEdit }) => {
       {edit && (
         <form className="edit" onSubmit={(e) => handleUpdate(e)}>
           <textarea
+            type="text"
             className="edit__input"
             value={currentText}
             onChange={(e) => setCurrentText(e.target.value)}

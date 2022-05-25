@@ -67,12 +67,12 @@ const Comment = ({ comment, reply }) => {
 
   return (
     <>
-      <article className={reply ? "comment reply" : "comment"}>
+      <div className={reply ? "comment reply" : "comment"}>
         <div className="comment__content">
           <div className="header">
             <div className="details">
               <img className="avatar" src={user.image.webp} alt="user avatar" />
-              <p className="user">{user.username}</p>
+              <h1 className="user">{user.username}</h1>
               {isCurrentUser && <p className="you"> you</p>}
               <p className="time">{createdAt}</p>
             </div>
@@ -148,7 +148,7 @@ const Comment = ({ comment, reply }) => {
             </div>
           )}
         </div>
-      </article>
+      </div>
       <div className={replyingTo ? "reply__input" : null}>
         {displayReply && (
           <InputBox
