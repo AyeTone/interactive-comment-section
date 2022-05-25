@@ -145,7 +145,7 @@ const Comment = ({ comment, reply }) => {
                 Delete
               </button>
               <button onClick={() => setEdit(true)} className="comment__edit">
-                <img src={Edit} alt="delete" />
+                <img src={Edit} alt="edit" />
                 Edit
               </button>
             </div>

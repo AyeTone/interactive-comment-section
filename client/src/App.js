@@ -27,10 +27,10 @@ function App() {
     >
       <div className="App">
         {displayModal.isDisplayed && <DeleteModal />}
-        <div className="content">
+        <main className="content">
           <Comments />
           <InputBox />
-        </div>
+        </main>
       </div>
     </DataContext.Provider>
   );

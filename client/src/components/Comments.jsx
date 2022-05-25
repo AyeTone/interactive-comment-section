@@ -23,7 +23,7 @@ const Comments = () => {
     );
   });
 
-  return <main className="comments">{displayComments}</main>;
+  return <div className="comments">{displayComments}</div>;
 };
 
 export default Comments;
