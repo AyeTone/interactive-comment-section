@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import ReplyBtn from "../../images/icon-reply.svg";
 import { ReactComponent as Plus } from "../../images/icon-plus.svg";
 import { ReactComponent as Minus } from "../../images/icon-minus.svg";
-import Delete from "../../images/icon-delete.svg";
-import Edit from "../../images/icon-edit.svg";
+import { ReactComponent as Delete } from "../../images/icon-delete.svg";
+import { ReactComponent as Edit } from "../../images/icon-edit.svg";
 import DataContext from "../../Context/DataContent";
 import InputBox from "../InputBox";
 import CommentBody from "./CommentBody";
@@ -96,14 +96,14 @@ const Comment = ({ comment, reply }) => {
                     onClick={() => showPrompt(id)}
                     className="comment__delete"
                   >
-                    <img src={Delete} alt="delete" />
+                    <Delete />
                     Delete
                   </button>
                   <button
                     onClick={() => setEdit(true)}
                     className="comment__edit"
                   >
-                    <img src={Edit} alt="edit" />
+                    <Edit />
                     Edit
                   </button>
                 </div>
@@ -122,9 +122,7 @@ const Comment = ({ comment, reply }) => {
         <div className="comment__buttons">
           <div className="likes">
             <Plus onClick={() => addToScore()} className="plusBtn" />
-
             <p className="score">{currentScore.current}</p>
-
             <Minus onClick={() => subtractScore()} className="minusBtn" />
           </div>
           {!isCurrentUser ? (
@@ -141,11 +139,11 @@ const Comment = ({ comment, reply }) => {
                 onClick={() => showPrompt(id)}
                 className="comment__delete"
               >
-                <img src={Delete} alt="delete" />
+                <Delete />
                 Delete
               </button>
               <button onClick={() => setEdit(true)} className="comment__edit">
-                <img src={Edit} alt="edit" />
+                <Edit />
                 Edit
               </button>
             </div>
