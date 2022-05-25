@@ -18,6 +18,7 @@ const Comment = ({ comment, reply }) => {
   });
   const [displayReply, setDisplayReply] = useState(false);
   const [edit, setEdit] = useState(false);
+  const username = user.username;
 
   const isCurrentUser = currentUser.username === user.username;
 
@@ -67,12 +68,16 @@ const Comment = ({ comment, reply }) => {
 
   return (
     <>
-      <div className={reply ? "comment reply" : "comment"}>
+      <article className={reply ? "comment reply" : "comment"}>
         <div className="comment__content">
-          <div className="header">
+          <header className="header">
             <div className="details">
-              <img className="avatar" src={user.image.webp} alt="user avatar" />
-              <h1 className="user">{user.username}</h1>
+              <img
+                className="avatar"
+                src={user.image.webp}
+                alt={`${username} avatar`}
+              />
+              <h1 className="user">{username}</h1>
               {isCurrentUser && <p className="you"> you</p>}
               <p className="time">{createdAt}</p>
             </div>
@@ -98,13 +103,13 @@ const Comment = ({ comment, reply }) => {
                     onClick={() => setEdit(true)}
                     className="comment__edit"
                   >
-                    <img src={Edit} alt="delete" />
+                    <img src={Edit} alt="edit" />
                     Edit
                   </button>
                 </div>
               )}
             </div>
-          </div>
+          </header>
           <p className="text">
             <CommentBody
               edit={edit}
@@ -146,7 +151,7 @@ const Comment = ({ comment, reply }) => {
             </div>
           )}
         </div>
-      </div>
+      </article>
       <div className={replyingTo ? "reply__input" : null}>
         {displayReply && (
           <InputBox

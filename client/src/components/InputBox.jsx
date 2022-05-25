@@ -31,10 +31,10 @@ const InputBox = ({ displayReply, setDisplayReply, id, replyingTo }) => {
           alt="Current User"
         />
         <textarea
+          type="text"
           className="input"
           value={userInput}
           placeholder="Add a comment..."
-          type="text"
           onChange={(e) => {
             setUserInput(e.target.value);
           }}
