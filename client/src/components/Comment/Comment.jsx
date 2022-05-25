@@ -73,6 +73,7 @@ const Comment = ({ comment, reply }) => {
             <div className="details">
               <img className="avatar" src={user.image.webp} alt="user avatar" />
               <p className="user">{user.username}</p>
+              {isCurrentUser && <p className="you"> you</p>}
               <p className="time">{createdAt}</p>
             </div>
             <div>
