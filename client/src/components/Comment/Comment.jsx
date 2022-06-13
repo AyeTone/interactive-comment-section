@@ -121,9 +121,19 @@ const Comment = ({ comment, reply }) => {
         </div>
         <div className="comment__buttons">
           <div className="likes">
-            <Plus onClick={() => addToScore()} className="plusBtn" />
+            <Plus
+              onClick={() => addToScore()}
+              className={
+                currentScore.current > score ? "plusBtn selected" : "plusBtn"
+              }
+            />
             <p className="score">{currentScore.current}</p>
-            <Minus onClick={() => subtractScore()} className="minusBtn" />
+            <Minus
+              onClick={() => subtractScore()}
+              className={
+                currentScore.current < score ? "minusBtn selected" : "minusBtn"
+              }
+            />
           </div>
           {!isCurrentUser ? (
             <button

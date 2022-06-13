@@ -164,6 +164,7 @@
   &__delete {
     @include buttons;
     @include chatButtons;
+    margin-right: 12px;
 
     color: $softRed;
   }
@@ -212,4 +213,8 @@
   &__replies {
     width: 90%;
   }
+}
+
+.selected > path {
+  fill: $modBlue;
 }

@@ -23,9 +23,7 @@ const DeleteModal = () => {
         })
     );
 
-    setTimeout(() => {
-      setDisplayModal({ isDisplayed: false, id: null });
-    }, 500);
+    setDisplayModal({ isDisplayed: false, id: null });
   };
 
   const cancelDelete = () => {
