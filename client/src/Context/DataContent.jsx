@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import Data from "../data.json";
+import { addComment } from "../components/functions/addComment";
 
 const DataContext = createContext();
 
@@ -18,6 +19,7 @@ export const DataProvider = ({ children }) => {
     setCurrentUser,
     displayModal,
     setDisplayModal,
+    addComment,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

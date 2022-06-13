@@ -32,7 +32,7 @@
   background-color: $white;
   border-radius: $borderRad;
 
-  @include breakpoint(desktop) {
+  @include breakpoint(tablet) {
     flex-direction: row-reverse;
     min-height: 150px;
   }
@@ -40,7 +40,7 @@
   &__content {
     padding: 0 20px;
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       flex: 9;
     }
 
@@ -51,7 +51,7 @@
       align-items: center;
       gap: 20px;
 
-      @include breakpoint(desktop) {
+      @include breakpoint(tablet) {
         justify-content: space-between;
       }
 
@@ -99,7 +99,7 @@
       padding: 5px 10px;
       border-radius: 7px;
 
-      @include breakpoint(desktop) {
+      @include breakpoint(tablet) {
         max-height: 100px;
         padding: 10px 10px;
 
@@ -174,13 +174,13 @@
   .desktop {
     display: none;
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       display: flex;
     }
   }
 
   .mobile {
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       display: none;
     }
   }
@@ -198,7 +198,7 @@
       background-color: $liteGray;
     }
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       margin-right: 30px;
       display: flex;
       justify-content: center;

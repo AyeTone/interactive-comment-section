@@ -15,7 +15,7 @@
   }
 
   &__main {
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       display: flex;
       gap: 10px;
       flex: 9;
@@ -32,7 +32,7 @@
       border: 1px solid $liteGray;
       border-radius: $borderRad;
 
-      @include breakpoint(desktop) {
+      @include breakpoint(tablet) {
         height: 100px;
       }
 
@@ -76,13 +76,13 @@
   .desktop {
     display: none;
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       display: unset;
     }
   }
 
   .mobile {
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       display: none;
     }
   }
@@ -90,7 +90,7 @@
   .avatar {
     width: 30px;
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       width: 35px;
       height: 35px;
     }

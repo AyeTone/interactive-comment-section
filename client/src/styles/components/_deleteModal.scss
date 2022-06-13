@@ -46,7 +46,7 @@
     background-color: $white;
     border-radius: $borderRad;
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       width: 30%;
     }
   }
