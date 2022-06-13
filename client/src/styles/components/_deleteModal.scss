@@ -47,13 +47,17 @@
     border-radius: $borderRad;
 
     @include breakpoint(tablet) {
-      width: 30%;
+      width: 60%;
+      max-width: 400px;
     }
   }
 
   &__text {
     display: grid;
     gap: 15px;
+
+    @include breakpoint(tablet) {
+    }
 
     .header {
       color: $darkBlue;
