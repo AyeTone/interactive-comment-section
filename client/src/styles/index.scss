@@ -10,11 +10,11 @@
 @use "./base/content";
 
 /* components */
-@use "./components/comments";
-@use "./components/comment";
-@use "./components/commentBody";
-@use "./components/inputBox";
-@use "./components/deleteModal";
+@use "./components/Comments";
+@use "./components/Comment";
+@use "./components/CommentBody";
+@use "./components/InputBox";
+@use "./components/DeleteModal";
 
 /* utils */
 @use "./utils/breakpoints";
