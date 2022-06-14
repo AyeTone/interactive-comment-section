@@ -39,12 +39,6 @@
 
 /* CSS Starts */
 
-/* 
-
-      COMMENT
-
-*/
-
 .comment {
   margin-bottom: 15px;
   padding: 15px;
@@ -130,6 +124,10 @@
   }
 }
 
+.selected > path {
+  fill: $modBlue;
+}
+
 .comment__reply--btn {
   @include buttons;
   @include chatButtons;
@@ -157,23 +155,17 @@
   }
 }
 
-.selected > path {
-  fill: $modBlue;
-}
-
 .tablet {
   display: none;
-
-  @include breakpoint(tablet) {
-    display: flex;
-  }
 }
 
-.mobile {
-  @include breakpoint(tablet) {
-    display: none;
-  }
-}
+/* 
+
+
+        BREAKPOINTS
+
+
+*/
 
 @include breakpoint(tablet) {
   .comment {
@@ -192,5 +184,13 @@
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .tablet {
+    display: flex;
   }
 }

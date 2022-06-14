@@ -5,26 +5,29 @@
   padding-top: 20px;
 }
 
-.replies {
+.comments__replies {
   display: flex;
 
-  &__offset {
-    flex: 1;
-    .line {
-      content: " ";
-      width: 3px;
-      height: 100%;
-      background-color: $liteGray;
-    }
-
-    @include breakpoint(tablet) {
-      margin-right: 30px;
-      display: flex;
-      justify-content: center;
-    }
-  }
-
-  &__replies {
+  &--list {
     width: 90%;
+  }
+}
+
+.comments__offset {
+  flex: 1;
+
+  &--line {
+    content: " ";
+    width: 3px;
+    height: 100%;
+    background-color: $liteGray;
+  }
+}
+
+@include breakpoint(tablet) {
+  .comments__offset {
+    margin-right: 30px;
+    display: flex;
+    justify-content: center;
   }
 }

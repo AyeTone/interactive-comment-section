@@ -9,11 +9,11 @@ const Comments = () => {
     return (
       <div key={id}>
         <Comment comment={comment} />
-        <div className="replies">
-          <div className="replies__offset">
-            <div className="line"></div>
+        <div className="comments__replies">
+          <div className="comments__offset">
+            <div className="comments__offset--line"></div>
           </div>
-          <div className="replies__replies">
+          <div className="comments__replies--list">
             {comment.replies.map((reply, id) => {
               return <Comment key={id} reply={reply} />;
             })}
