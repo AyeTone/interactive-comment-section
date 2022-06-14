@@ -65,9 +65,33 @@ const Comment = ({ comment, reply }) => {
     setDisplayReply(true);
   };
 
+  const displayBtns = !isCurrentUser ? (
+    <button onClick={() => showReply()} className="comment__reply--btn">
+      <img className="comment__reply--img" src={ReplyBtn} alt="reply button" />{" "}
+      Reply
+    </button>
+  ) : (
+    <div className="comment__current-user-btn ">
+      <button
+        onClick={() => showPrompt(id)}
+        className="comment__current-user-btn--delete"
+      >
+        <Delete />
+        Delete
+      </button>
+      <button
+        onClick={() => setEdit(true)}
+        className="comment__current-user-btn--edit"
+      >
+        <Edit />
+        Edit
+      </button>
+    </div>
+  );
+
   return (
     <>
-      <article className={reply ? "comment reply" : "comment"}>
+      <article className="comment">
         <div className="comment__content">
           <header className="comment__header">
             <div className="comment__header--row">
@@ -83,38 +107,7 @@ const Comment = ({ comment, reply }) => {
               <p className="comment__header--time">{createdAt}</p>
             </div>
 
-            <div>
-              {!isCurrentUser ? (
-                <button
-                  onClick={() => showReply()}
-                  className="comment__reply--btn tablet"
-                >
-                  <img
-                    className="comment__reply--img"
-                    src={ReplyBtn}
-                    alt="reply button"
-                  />{" "}
-                  Reply
-                </button>
-              ) : (
-                <div className="comment__current-user-btn tablet">
-                  <button
-                    onClick={() => showPrompt(id)}
-                    className="comment__current-user-btn--delete"
-                  >
-                    <Delete />
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => setEdit(true)}
-                    className="comment__current-user-btn--edit"
-                  >
-                    <Edit />
-                    Edit
-                  </button>
-                </div>
-              )}
-            </div>
+            <div className="tablet">{displayBtns}</div>
           </header>
 
           <p className="text">
@@ -147,45 +140,18 @@ const Comment = ({ comment, reply }) => {
               }
             />
           </div>
-          {!isCurrentUser ? (
-            <button
-              onClick={() => showReply()}
-              className="comment__reply--btn mobile"
-            >
-              <img className="replyImg" src={ReplyBtn} alt="reply button" />{" "}
-              Reply
-            </button>
-          ) : (
-            <div className="comment__current-user-btn mobile">
-              <button
-                onClick={() => showPrompt(id)}
-                className="comment__current-user-btn--delete"
-              >
-                <Delete />
-                Delete
-              </button>
-              <button
-                onClick={() => setEdit(true)}
-                className="comment__current-user-btn--edit"
-              >
-                <Edit />
-                Edit
-              </button>
-            </div>
-          )}
+          <div className="mobile">{displayBtns}</div>
         </div>
       </article>
 
-      <div className={replyingTo ? "reply__input" : null}>
-        {displayReply && (
-          <InputBox
-            id={id}
-            replyingTo={user.username}
-            displayReply={displayReply}
-            setDisplayReply={setDisplayReply}
-          />
-        )}
-      </div>
+      {displayReply && (
+        <InputBox
+          id={id}
+          replyingTo={user.username}
+          displayReply={displayReply}
+          setDisplayReply={setDisplayReply}
+        />
+      )}
     </>
   );
 };

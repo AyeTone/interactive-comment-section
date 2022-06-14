@@ -173,6 +173,10 @@
     min-height: 150px;
   }
 
+  .comment__header {
+    justify-content: space-between;
+  }
+
   .comment__content {
     flex: 9;
   }
