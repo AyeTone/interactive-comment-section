@@ -1,9 +1,17 @@
 @use "../abstracts/variables" as *;
 
-.edit {
+.comment-body {
+  line-height: 1.5;
+}
+
+.comment-body__replying-to {
+  color: $modBlue;
+}
+
+.comment-body__edit {
   width: 100%;
 
-  &__input {
+  &--input {
     width: 100%;
     resize: none;
 
@@ -12,19 +20,15 @@
     margin-bottom: 10px;
     padding: 10px 20px;
 
-    border: 1px solid $liteGray;
+    border: 2px solid $liteGray;
     border-radius: $borderRad;
 
-    &:hover {
-      cursor: pointer;
-    }
-
     &:focus {
-      outline: 1px solid $modBlue;
+      outline: 2px solid $modBlue;
     }
   }
 
-  &__submit {
+  &--submit {
     float: right;
 
     padding: 10px 25px;

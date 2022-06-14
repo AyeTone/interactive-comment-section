@@ -1,37 +1,37 @@
 import React, { useState } from "react";
 
-const CommentBody = ({ replyingTo, content, edit, setEdit }) => {
+const CommentBody = ({ replyingTo, content, editing, setEditing }) => {
   const [currentText, setCurrentText] = useState(`@${replyingTo} ${content}`);
   const [edited, setEdited] = useState(false);
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    setEdit(false);
+    setEditing(false);
     setEdited(true);
   };
 
   return (
-    <>
-      {replyingTo && !edit && !edited && (
-        <span className="replyingTo"> @{replyingTo} </span>
+    <div className="comment-body">
+      {replyingTo && !editing && !edited && (
+        <span className="comment-body__replying-to"> @{replyingTo} </span>
       )}
-      {!edit && !edited && content}
-      {edited && !edit && currentText}
-      {edit && (
-        <form className="edit" onSubmit={(e) => handleUpdate(e)}>
+      {!editing && !edited && content}
+      {edited && !editing && currentText}
+      {editing && (
+        <form className="comment-body__edit" onSubmit={(e) => handleUpdate(e)}>
           <textarea
             type="text"
-            className="edit__input"
+            className="comment-body__edit--input"
             value={currentText}
             onChange={(e) => setCurrentText(e.target.value)}
           />
-          <button className="edit__submit" type="submit">
+          <button className="comment-body__edit--submit" type="submit">
             {" "}
             Update
           </button>
         </form>
       )}
-    </>
+    </div>
   );
 };
 

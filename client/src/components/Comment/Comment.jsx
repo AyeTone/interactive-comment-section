@@ -17,7 +17,7 @@ const Comment = ({ comment, reply }) => {
     hasSubtracted: false,
   });
   const [displayReply, setDisplayReply] = useState(false);
-  const [edit, setEdit] = useState(false);
+  const [editing, setEditing] = useState(false);
   const username = user.username;
   const isCurrentUser = currentUser.username === user.username;
 
@@ -80,7 +80,7 @@ const Comment = ({ comment, reply }) => {
         Delete
       </button>
       <button
-        onClick={() => setEdit(true)}
+        onClick={() => setEditing(true)}
         className="comment__current-user-btn--edit"
       >
         <Edit />
@@ -110,14 +110,12 @@ const Comment = ({ comment, reply }) => {
             <div className="tablet">{displayBtns}</div>
           </header>
 
-          <p className="text">
-            <CommentBody
-              edit={edit}
-              setEdit={setEdit}
-              replyingTo={replyingTo}
-              content={content}
-            />
-          </p>
+          <CommentBody
+            editing={editing}
+            setEditing={setEditing}
+            replyingTo={replyingTo}
+            content={content}
+          />
         </div>
 
         <div className="comment__buttons">
