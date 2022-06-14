@@ -23,7 +23,7 @@
   }
 }
 
-.modal {
+.delete-modal {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -35,53 +35,52 @@
   z-index: 1;
 
   background-color: rgba(0, 0, 0, 0.333);
+}
 
-  &__content {
-    padding: 20px;
-    width: 80%;
+.delete-modal__wrapper {
+  padding: 20px;
+  width: 80%;
 
-    display: grid;
-    gap: 20px;
+  display: grid;
+  gap: 20px;
 
-    background-color: $white;
-    border-radius: $borderRad;
+  background-color: $white;
+  border-radius: $borderRad;
+}
 
-    @include breakpoint(tablet) {
-      width: 60%;
-      max-width: 400px;
-    }
+.delete-modal__content {
+  display: grid;
+  gap: 15px;
+
+  &--header {
+    color: $darkBlue;
+    font-weight: $mediumWg;
+    font-size: $mdFz;
   }
 
-  &__text {
-    display: grid;
-    gap: 15px;
+  &--para {
+    line-height: 1.4rem;
+  }
+}
 
-    @include breakpoint(tablet) {
-    }
+.delete-modal__btns {
+  display: flex;
+  justify-content: space-between;
 
-    .header {
-      color: $darkBlue;
-      font-weight: $mediumWg;
-      font-size: $mdFz;
-    }
-
-    .text {
-      line-height: 1.4rem;
-    }
+  &--no {
+    @include buttons;
+    background-color: $grayishBlue;
   }
 
-  &__btns {
-    display: flex;
-    justify-content: space-between;
+  &--cancel {
+    @include buttons;
+    background-color: $softRed;
+  }
+}
 
-    .dont-cancel {
-      @include buttons;
-      background-color: $grayishBlue;
-    }
-
-    .cancel {
-      @include buttons;
-      background-color: $softRed;
-    }
+@include breakpoint(tablet) {
+  .delete-modal__wrapper {
+    width: 60%;
+    max-width: 400px;
   }
 }

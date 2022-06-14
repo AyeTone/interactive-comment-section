@@ -33,21 +33,27 @@ const DeleteModal = () => {
   };
 
   return (
-    <div className="modal">
-      <div className="modal__content">
-        <div className="modal__text">
-          <p className="header"> Delete comment</p>
-          <p className="text">
+    <div className="delete-modal">
+      <div className="delete-modal__wrapper">
+        <div className="delete-modal__content">
+          <p className="delete-modal__content--header"> Delete comment</p>
+          <p className="delete-modal__content--para">
             {" "}
             Are you sure you want to delete this comment? This will remove the
             comment and can't be undone.
           </p>
         </div>
-        <div className="modal__btns">
-          <button onClick={() => cancelDelete()} className="dont-cancel">
+        <div className="delete-modal__btns">
+          <button
+            onClick={() => cancelDelete()}
+            className="delete-modal__btns--no"
+          >
             No, Cancel
           </button>
-          <button onClick={() => deleteComment()} className="cancel">
+          <button
+            onClick={() => deleteComment()}
+            className="delete-modal__btns--cancel"
+          >
             Yes, Delete
           </button>
         </div>
