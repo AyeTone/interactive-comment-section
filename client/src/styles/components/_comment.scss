@@ -1,13 +1,25 @@
 @use "../abstracts/variables" as *;
 @use "../utils/breakpoints" as *;
 
+/* Mixins */
+
 @mixin buttons {
   border: none;
   background-color: transparent;
   cursor: pointer;
 
+  path {
+    transition: 0.2s;
+  }
+
   &:active {
     transform: scale(0.8);
+  }
+
+  &:hover:not(.comment__current-user-btn--delete) {
+    path {
+      fill: $modBlue;
+    }
   }
 }
 
@@ -25,6 +37,14 @@
   }
 }
 
+/* CSS Starts */
+
+/* 
+
+      COMMENT
+
+*/
+
 .comment {
   margin-bottom: 15px;
   padding: 15px;
@@ -36,51 +56,7 @@
   background-color: $white;
   border-radius: $borderRad;
 
-  @include breakpoint(tablet) {
-    flex-direction: row-reverse;
-    min-height: 150px;
-  }
-
   &__content {
-    padding: 0 20px;
-
-    @include breakpoint(tablet) {
-      flex: 9;
-    }
-
-    .header {
-      margin-bottom: 10px;
-
-      display: flex;
-      align-items: center;
-      gap: 20px;
-
-      @include breakpoint(tablet) {
-        justify-content: space-between;
-      }
-
-      .details {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .avatar {
-        width: 35px;
-      }
-
-      .you {
-        background-color: $modBlue;
-        color: $white;
-        padding: 2px 7px;
-      }
-
-      .user {
-        color: $darkBlue;
-        font-weight: $mediumWg;
-      }
-    }
-
     .text {
       line-height: 1.5rem;
 
@@ -89,79 +65,83 @@
       }
     }
   }
+}
 
-  &__buttons {
-    display: flex;
-    justify-content: space-between;
+.comment__content {
+  padding: 0 20px;
+}
 
-    .likes {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+.comment__header {
+  margin-bottom: 10px;
 
-      background-color: $liteGray;
-      padding: 5px 10px;
-      border-radius: 7px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-      @include breakpoint(tablet) {
-        max-height: 100px;
-        padding: 10px 10px;
+.comment__header--row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-        flex-direction: column;
-        justify-content: space-around;
-        text-align: center;
-      }
+.comment__header--avatar {
+  width: 35px;
+}
 
-      .plusBtn {
-        @include buttons;
+.comment__header--current-user {
+  background-color: $modBlue;
+  color: $white;
+  padding: 2px 7px;
+}
 
-        path {
-          transition: 0.2s;
-        }
+.comment__header--user {
+  color: $darkBlue;
+  font-weight: $mediumWg;
+}
 
-        &:hover {
-          path {
-            fill: $modBlue;
-          }
-        }
-      }
+.comment__buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
-      .score {
-        color: $modBlue;
-        font-weight: $mediumWg;
-      }
+.comment__likes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-      .minusBtn {
-        @include buttons;
-        display: flex;
-        align-items: center;
+  background-color: $liteGray;
+  padding: 5px 10px;
+  border-radius: 7px;
 
-        path {
-          transition: 0.2s;
-        }
-
-        &:hover {
-          path {
-            fill: $modBlue;
-          }
-        }
-      }
-    }
-  }
-
-  &__reply {
+  &--plus-btn {
     @include buttons;
-    @include chatButtons;
+  }
 
+  &--score {
     color: $modBlue;
+    font-weight: $mediumWg;
   }
 
-  &__userBtns {
+  &--minus-btn {
+    @include buttons;
     display: flex;
-    flex-wrap: nowrap;
+    align-items: center;
   }
+}
 
-  &__delete {
+.comment__reply--btn {
+  @include buttons;
+  @include chatButtons;
+
+  color: $modBlue;
+}
+
+.comment__current-user-btn {
+  display: flex;
+  flex-wrap: nowrap;
+
+  &--delete {
     @include buttons;
     @include chatButtons;
     margin-right: 12px;
@@ -169,52 +149,48 @@
     color: $softRed;
   }
 
-  &__edit {
+  &--edit {
     @include buttons;
     @include chatButtons;
 
     color: $modBlue;
   }
-
-  .desktop {
-    display: none;
-
-    @include breakpoint(tablet) {
-      display: flex;
-    }
-  }
-
-  .mobile {
-    @include breakpoint(tablet) {
-      display: none;
-    }
-  }
-}
-
-.replies {
-  display: flex;
-
-  &__offset {
-    flex: 1;
-    .line {
-      content: " ";
-      width: 3px;
-      height: 100%;
-      background-color: $liteGray;
-    }
-
-    @include breakpoint(tablet) {
-      margin-right: 30px;
-      display: flex;
-      justify-content: center;
-    }
-  }
-
-  &__replies {
-    width: 90%;
-  }
 }
 
 .selected > path {
   fill: $modBlue;
+}
+
+.tablet {
+  display: none;
+
+  @include breakpoint(tablet) {
+    display: flex;
+  }
+}
+
+.mobile {
+  @include breakpoint(tablet) {
+    display: none;
+  }
+}
+
+@include breakpoint(tablet) {
+  .comment {
+    flex-direction: row-reverse;
+    min-height: 150px;
+  }
+
+  .comment__content {
+    flex: 9;
+  }
+
+  .comment__likes {
+    max-height: 100px;
+    padding: 10px 10px;
+
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+  }
 }

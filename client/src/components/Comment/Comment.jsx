@@ -19,7 +19,6 @@ const Comment = ({ comment, reply }) => {
   const [displayReply, setDisplayReply] = useState(false);
   const [edit, setEdit] = useState(false);
   const username = user.username;
-
   const isCurrentUser = currentUser.username === user.username;
 
   const addToScore = () => {
@@ -70,38 +69,45 @@ const Comment = ({ comment, reply }) => {
     <>
       <article className={reply ? "comment reply" : "comment"}>
         <div className="comment__content">
-          <header className="header">
-            <div className="details">
+          <header className="comment__header">
+            <div className="comment__header--row">
               <img
-                className="avatar"
+                className="comment__header--avatar"
                 src={user.image.webp}
                 alt={`${username} avatar`}
               />
-              <h1 className="user">{username}</h1>
-              {isCurrentUser && <p className="you"> you</p>}
-              <p className="time">{createdAt}</p>
+              <h1 className="comment__header--user">{username}</h1>
+              {isCurrentUser && (
+                <p className="comment__header--current-user"> you</p>
+              )}
+              <p className="comment__header--time">{createdAt}</p>
             </div>
+
             <div>
               {!isCurrentUser ? (
                 <button
                   onClick={() => showReply()}
-                  className="comment__reply desktop"
+                  className="comment__reply--btn tablet"
                 >
-                  <img className="replyImg" src={ReplyBtn} alt="reply button" />{" "}
+                  <img
+                    className="comment__reply--img"
+                    src={ReplyBtn}
+                    alt="reply button"
+                  />{" "}
                   Reply
                 </button>
               ) : (
-                <div className="comment__userBtns desktop">
+                <div className="comment__current-user-btn tablet">
                   <button
                     onClick={() => showPrompt(id)}
-                    className="comment__delete"
+                    className="comment__current-user-btn--delete"
                   >
                     <Delete />
                     Delete
                   </button>
                   <button
                     onClick={() => setEdit(true)}
-                    className="comment__edit"
+                    className="comment__current-user-btn--edit"
                   >
                     <Edit />
                     Edit
@@ -110,6 +116,7 @@ const Comment = ({ comment, reply }) => {
               )}
             </div>
           </header>
+
           <p className="text">
             <CommentBody
               edit={edit}
@@ -119,40 +126,48 @@ const Comment = ({ comment, reply }) => {
             />
           </p>
         </div>
+
         <div className="comment__buttons">
-          <div className="likes">
+          <div className="comment__likes">
             <Plus
               onClick={() => addToScore()}
               className={
-                currentScore.current > score ? "plusBtn selected" : "plusBtn"
+                currentScore.current > score
+                  ? "comment__likes--plus-btn selected"
+                  : "comment__likes--plus-btn"
               }
             />
-            <p className="score">{currentScore.current}</p>
+            <p className="comment__likes--score">{currentScore.current}</p>
             <Minus
               onClick={() => subtractScore()}
               className={
-                currentScore.current < score ? "minusBtn selected" : "minusBtn"
+                currentScore.current < score
+                  ? "comment__likes--minus-btn selected"
+                  : "comment__likes--minus-btn"
               }
             />
           </div>
           {!isCurrentUser ? (
             <button
               onClick={() => showReply()}
-              className="comment__reply mobile"
+              className="comment__reply--btn mobile"
             >
               <img className="replyImg" src={ReplyBtn} alt="reply button" />{" "}
               Reply
             </button>
           ) : (
-            <div className="comment__userBtns mobile">
+            <div className="comment__current-user-btn mobile">
               <button
                 onClick={() => showPrompt(id)}
-                className="comment__delete"
+                className="comment__current-user-btn--delete"
               >
                 <Delete />
                 Delete
               </button>
-              <button onClick={() => setEdit(true)} className="comment__edit">
+              <button
+                onClick={() => setEdit(true)}
+                className="comment__current-user-btn--edit"
+              >
                 <Edit />
                 Edit
               </button>
@@ -160,6 +175,7 @@ const Comment = ({ comment, reply }) => {
           )}
         </div>
       </article>
+
       <div className={replyingTo ? "reply__input" : null}>
         {displayReply && (
           <InputBox
