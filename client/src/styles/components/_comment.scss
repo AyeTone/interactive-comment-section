@@ -145,10 +145,6 @@
   }
 }
 
-.tablet {
-  display: none;
-}
-
 /* 
 
 
@@ -178,13 +174,5 @@
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
-  }
-
-  .mobile {
-    display: none;
-  }
-
-  .tablet {
-    display: flex;
   }
 }

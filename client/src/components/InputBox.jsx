@@ -22,16 +22,16 @@ const InputBox = ({ displayReply, setDisplayReply, id, replyingTo }) => {
       onSubmit={(e) => {
         handleSubmit(e);
       }}
-      className="form"
+      className="input-box"
     >
-      <div className="form__main">
+      <div className="input-box__body">
         <img
-          className="avatar desktop"
+          className="input-box__avatar tablet"
           src={currentUser.image.png}
           alt="Current User"
         />
         <textarea
-          className="input"
+          className="input-box__body--input"
           value={userInput}
           placeholder="Add a comment..."
           onChange={(e) => {
@@ -39,13 +39,13 @@ const InputBox = ({ displayReply, setDisplayReply, id, replyingTo }) => {
           }}
         />
       </div>
-      <div className="form__footer">
+      <div className="input-box__footer">
         <img
-          className="avatar mobile"
+          className="input-box__avatar mobile"
           src={currentUser.image.png}
           alt="Current User"
         />
-        <button className="submit" type="submit">
+        <button className="input-box__submit-btn" type="submit">
           SEND
         </button>
       </div>
